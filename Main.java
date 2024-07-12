@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -42,7 +43,7 @@ public class Main {
 //            System.out.println("Please write a number : ");
 //            int num = sc.nextInt();
 //            printMultiplicationTable(num);
-//        }catch(Exception e){
+//        }catch(IllegalArgumentException e){
 //            System.out.println(e.getMessage());
 //        }
 
@@ -52,7 +53,7 @@ public class Main {
 //            System.out.println("Enter your Radius number : ");
 //            double radius = sc.nextDouble();
 //            printCircleProperties(radius);
-//        } catch (Exception e) {
+//        } catch (IllegalArgumentException e) {
 //            System.out.println(e.getMessage());
 //        }
 
@@ -99,7 +100,7 @@ public class Main {
 //            String sentence = sc.nextLine();
 //            String reverse = reverseSentence(sentence);
 //            System.out.println("This is the sentence after reversing: " + reverse);
-//        } catch (Exception e) {
+//        } catch (IllegalArgumentException e) {
 //            System.out.println(e.getMessage());
 //        }
 
@@ -145,30 +146,30 @@ public class Main {
 //            int index = sc.nextInt();
 //            char c = getIndex(s, index);
 //            System.out.println("Your character is: " + c);
-//        }catch (Exception e){
+//        }catch (StringIndexOutOfBoundsException e){
 //            System.out.println(e.getMessage());
 //        }
 
         //Q10) Write a Java program to print the area and perimeter of a rectangle.
 
-        try {
-            System.out.println("Please enter your Width : ");
-            double width = sc.nextDouble();
-            System.out.println("Please enter your Height :");
-            double height = sc.nextDouble();
-            printRectangle(width, height);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+//        try {
+//            System.out.println("Please enter your Width : ");
+//            double width = sc.nextDouble();
+//            System.out.println("Please enter your Height :");
+//            double height = sc.nextDouble();
+//            printRectangle(width, height);
+//        } catch (IllegalArgumentException e) {
+//            System.out.println(e.getMessage());
+//        }
 
 
     }
 
 
     //Q2
-    public static void printMultiplicationTable(int num) throws Exception {
+    public static void printMultiplicationTable(int num) throws IllegalArgumentException  {
         if (num <= 0) {
-            throw new Exception("Number must be greater than zero.");
+            throw new IllegalArgumentException("Number must be greater than zero.");
         }
         for (int i = 1; i <= 10; i++) {
             System.out.println(num + " * " + i + " = " + (num * i));
@@ -176,9 +177,9 @@ public class Main {
     }
 
     //Q3
-    public static void printCircleProperties(double radius) throws Exception {
+    public static void printCircleProperties(double radius) throws IllegalArgumentException {
         if (radius <= 0) {
-            throw new Exception("Radius must be greater than zero.");
+            throw new IllegalArgumentException("Radius must be greater than zero.");
         }
         double perimeter = 2 * Math.PI * radius;
         double area = Math.PI * Math.pow(radius, 2);
@@ -187,9 +188,9 @@ public class Main {
     }
 
     //Q4
-    public static double calculateAverage(Scanner sc, int n) throws Exception {
+    public static double calculateAverage(Scanner sc, int n) throws InputMismatchException {
         if (n <= 0) {
-            throw new Exception("Number of integers must be greater than zero.");
+            throw new InputMismatchException("Number of integers must be greater than zero.");
         }
         double sum = 0;
         for (int i = 0; i < n; i++) {
@@ -201,9 +202,9 @@ public class Main {
     }
 
     //Q6
-    public static String reverseSentence(String sentence) throws Exception {
+    public static String reverseSentence(String sentence) throws IllegalArgumentException {
         if (sentence == null || sentence.isEmpty()) {
-            throw new Exception("Sentence cannot be null or empty.");
+            throw new IllegalArgumentException("Sentence cannot be null or empty.");
         }
         String reversed = "";
         for (int i = sentence.length() - 1; i >= 0; i--) {
@@ -213,17 +214,17 @@ public class Main {
     }
 
     //Q9
-    public static char getIndex(String s, int index) throws Exception {
+    public static char getIndex(String s, int index) throws StringIndexOutOfBoundsException {
         if (index < 0 || index >= s.length()) {
-            throw new Exception("Index out of bounds.");
+            throw new StringIndexOutOfBoundsException("Index out of bounds.");
         }
         return s.charAt(index);
     }
 
     //Q10
-    public static void printRectangle(double width, double height) throws Exception {
+    public static void printRectangle(double width, double height) throws IllegalArgumentException {
         if (width <= 0 || height <= 0) {
-            throw new Exception("Width and height must be greater than zero.");
+            throw new IllegalArgumentException("Width and height must be greater than zero.");
         }
         double area = width * height;
         double perimeter = 2 * (width + height);
